@@ -16,7 +16,12 @@ def main():
     print(f"\ninput:\n   {stretch_word(word)}\n\noutput:")
 
     for character in word_list:
-        chr = NATO_ALPHABET[character]
+        try:
+            chr = NATO_ALPHABET[character]
+        except KeyError:
+            print("Sorry, only letters in the alphabet please.")
+            main()
+
         wrd = f"{chr['word']} ({chr['pronounced']}) "
         print(f"   {character} {wrd:<23} "
               f"{chr['morse']:<6}"
